@@ -1,0 +1,73 @@
+<div *ngIf="mensajeExito" class="alerta-exito">
+  {{ mensajeExito }}
+</div>
+<div>
+  <h2>Creacion de Usuarios</h2>
+
+<button class="boton-principal" (click)="mostrarFormularioNuevoUsuario = true">Nuevo usuario</button>
+</div>
+
+<div *ngIf="mostrarFormularioNuevoUsuario" class="formulario-nuevo-usuario">
+  <form (ngSubmit)="crearUsuario()">
+    <label>Nombre:</label>
+    <input [(ngModel)]="nuevoUsuario.name" name="name" required />
+
+    <label>Email:</label>
+    <input [(ngModel)]="nuevoUsuario.email" name="email" required type="email" />
+
+    <label>Contraseña:</label>
+    <input [(ngModel)]="nuevoUsuario.password" name="password" required type="password" />
+
+    <label>Rol:</label>
+    <select [(ngModel)]="nuevoUsuario.rol" name="rol">
+      <option *ngFor="let rol of roles" [value]="rol">{{ rol }}</option>
+    </select>
+
+    <label>Activo:</label>
+    <input type="checkbox" [(ngModel)]="nuevoUsuario.activo" name="activo" />
+
+    <button type="submit" class="boton-principal">Guardar</button>
+    <button type="button" class="boton-secundario" (click)="mostrarFormularioNuevoUsuario = false">Cancelar</button>
+  </form>
+</div>
+
+<div class="tabla-usuarios" *ngIf="!mostrarFormularioNuevoUsuario">
+  <h2>Lista de Usuarios</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Rol</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of usuarios$ | async">
+        <td>
+          <span *ngIf="!editando[user.id]">{{ user.name || 'Sin nombre' }}</span>
+          <input *ngIf="editando[user.id]" [(ngModel)]="ediciones[user.id].name" />
+        </td>
+        <td>{{ user.email }}</td>
+        <td>
+          <span *ngIf="!editando[user.id]">{{ user.rol }}</span>
+          <select *ngIf="editando[user.id]" [(ngModel)]="ediciones[user.id].rol">
+            <option *ngFor="let rol of roles" [value]="rol">{{ rol }}</option>
+          </select>
+        </td>
+        <td>
+          <span *ngIf="!editando[user.id]">{{ user.activo ? 'Activo' : 'Inactivo' }}</span>
+          <input *ngIf="editando[user.id]" type="checkbox" [(ngModel)]="ediciones[user.id].activo" />
+        </td>
+        <td>
+          <button class="boton-secundario" *ngIf="!editando[user.id]" (click)="activarEdicion(user.id)">Editar</button>
+          <div *ngIf="editando[user.id]">
+            <button class="boton-principal" (click)="guardarCambios(user.id)">Guardar</button>
+            <button class="boton-secundario" (click)="cancelarEdicion(user.id)">Cancelar</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

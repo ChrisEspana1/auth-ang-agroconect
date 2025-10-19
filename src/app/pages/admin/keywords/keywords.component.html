@@ -1,0 +1,45 @@
+
+<div class="cabecera">
+  <h2>Gestión de Palabras Clave</h2>
+  <div class="botones-acciones">
+    <button class="boton-principal" (click)="toggleFormularioNuevo()">
+      {{ mostrarFormularioNuevo ? 'Ocultar formulario' : 'Agregar nueva palabra clave' }}
+    </button>
+    <button class="boton-principal" (click)="volverEdicionCurso()">
+      Regresar a la edición del curso
+    </button>
+  </div>
+</div>
+
+<!-- Formulario para nueva keyword -->
+<div *ngIf="mostrarFormularioNuevo" class="formulario-curso">
+  <p>Añadiendo palabra clave al curso: <strong>{{ cursoId }}</strong></p>
+  <form (ngSubmit)="agregarKeyword()">
+    <label>Palabra clave:</label>
+    <input [(ngModel)]="nuevaKeyword.palabra" name="palabra" required />
+    <button type="submit" class="boton-principal">Guardar</button>
+  </form>
+</div>
+
+<!-- Lista de keywords -->
+<div *ngIf="!mostrarFormularioNuevo">
+  <div *ngIf="keywords.length > 0; else sinKeywords">
+    <div *ngFor="let keyword of keywords; let i = index" class="contenido-card">
+      <ng-container *ngIf="editandoIndice === i; else vistaKeyword">
+        <form (ngSubmit)="guardarCambios(i)">
+          <input [(ngModel)]="keyword.palabra" name="palabra{{i}}" required />
+          <button type="submit" class="boton-principal">Guardar</button>
+          <button type="button" class="boton-secundario" (click)="cancelarEdicion()">Cancelar</button>
+        </form>
+      </ng-container>
+      <ng-template #vistaKeyword>
+        <p><strong>Palabra:</strong> {{ keyword.palabra }}</p>
+        <button class="boton-secundario" (click)="modificarKeyword(i)">Modificar</button>
+      </ng-template>
+    </div>
+  </div>
+  <ng-template #sinKeywords>
+    <p>No hay palabras clave para este curso.</p>
+  </ng-template>
+</div>
+

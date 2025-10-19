@@ -1,0 +1,107 @@
+<html lang="es">
+    <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AgroConecta - Foros</title>
+  </head>
+    <body>
+        <!-- Banner de la sección de foros -->
+  <section class="forum-header">
+    <h1>Foros Agropecuarios</h1>
+    <p>Preguntas y respuestas de la comunidad: técnicos, profesionales, empresas y pequeños productores</p>
+  </section>
+  
+  <!-- Contenedor principal de los foros -->
+  <div class="container">
+    <!-- Sección para realizar una nueva pregunta -->
+    <div class="new-question">
+      <button id="toggleQuestionForm">Realizar una Pregunta</button>
+      <form id="questionForm" class="question-form">
+        <label for="questionTitle">Título de la Pregunta:</label>
+        <input type="text" id="questionTitle" name="questionTitle" placeholder="Ingresa el título" required>
+        <label for="questionDetails">Detalles:</label>
+        <textarea id="questionDetails" name="questionDetails" placeholder="Describe tu pregunta" rows="4" required></textarea>
+        <button type="submit">Publicar Pregunta</button>
+      </form>
+    </div>
+    
+    <!-- Lista de foros -->
+    <div class="forum-list">
+      <!-- Primer post de foro -->
+      <div class="forum-post">
+        <div class="forum-stats">
+          <div>15</div>
+          <span>Votos</span>
+          <div>3</div>
+          <span>Respuestas</span>
+        </div>
+        <div class="forum-summary">
+          <h2>¿Cuál es la mejor técnica de poda para cafetos?</h2>
+          <p>Estoy interesado en conocer métodos efectivos para la poda de cafetos. ¿Alguien con experiencia podría recomendar una técnica probada que mejore la producción?</p>
+          <div class="best-answer">
+            <h3>Respuesta Destacada</h3>
+            <p><strong>Técnico Juan Pérez:</strong> Recomiendo realizar una poda ligera tras la cosecha principal para estimular nuevos brotes, lo que ha mostrado resultados en cultivos orgánicos.</p>
+          </div>
+          <a href="#" class="btn">Ver Detalles</a>
+        </div>
+      </div>
+      
+      <!-- Segundo post de foro -->
+      <div class="forum-post">
+        <div class="forum-stats">
+          <div>8</div>
+          <span>Votos</span>
+          <div>1</div>
+          <span>Respuesta</span>
+        </div>
+        <div class="forum-summary">
+          <h2>Optimización del uso de fertilizantes orgánicos</h2>
+          <p>Algunos pequeños productores tienen dudas con la dosificación correcta de fertilizantes orgánicos. ¿Qué métodos o consejos recomiendan?</p>
+          <div class="best-answer">
+            <h3>Respuesta Destacada</h3>
+            <p><strong>Profesional María López:</strong> Integrar compostaje y ajustar gradualmente la cantidad de fertilizante permite una transición controlada hacia cultivos orgánicos exitosos.</p>
+          </div>
+          <a href="#" class="btn">Ver Detalles</a>
+        </div>
+      </div>
+      
+      <!-- Tercer post de foro -->
+      <div class="forum-post">
+        <div class="forum-stats">
+          <div>20</div>
+          <span>Votos</span>
+          <div>5</div>
+          <span>Respuestas</span>
+        </div>
+        <div class="forum-summary">
+          <h2>Sistemas de riego en zonas con escasez de agua</h2>
+          <p>¿Alguien ha implementado soluciones innovadoras para el riego eficiente en áreas con recursos hídricos limitados? Busco experiencias reales y métodos comprobados.</p>
+          <div class="best-answer">
+            <h3>Respuesta Destacada</h3>
+            <p><strong>Empresa AgroTech:</strong> Implementamos un sistema de riego por goteo con sensores de humedad que ha permitido mejorar significativamente el uso del agua y aumentar el rendimiento.</p>
+          </div>
+          <a href="#" class="btn">Ver Detalles</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <script>
+    // Toggle para mostrar/ocultar el formulario de nueva pregunta
+    document.getElementById('toggleQuestionForm').addEventListener('click', function() {
+      const form = document.getElementById('questionForm');
+      form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
+    });
+  
+    // Ejemplo básico para el envio del formulario (puedes ampliar la lógica de integración)
+    document.getElementById('questionForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert("La pregunta ha sido enviada (funcionalidad pendiente de integración).");
+      // Aquí se implementaría la lógica para guardar la pregunta.
+      this.reset();
+      this.style.display = 'none';
+    });
+      </script>
+    </body>
+</html>

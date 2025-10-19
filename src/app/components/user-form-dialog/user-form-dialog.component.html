@@ -1,0 +1,53 @@
+<h2>Nuevo usuario</h2>
+
+<form *ngIf="tipoRegistro === 'email'" (ngSubmit)="crearUsuarioEmail()">
+  <label>Nombre:</label>
+  <input [(ngModel)]="nuevoUsuario.name" name="name" required />
+
+  <label>Email:</label>
+  <input [(ngModel)]="nuevoUsuario.email" name="email" required type="email" />
+
+  <label>Contraseña:</label>
+  <input [(ngModel)]="nuevoUsuario.password" name="password" required type="password" />
+
+  <label>Rol:</label>
+  <select [(ngModel)]="nuevoUsuario.rol" name="rol">
+    <option *ngFor="let rol of roles" [value]="rol">{{ rol }}</option>
+  </select>
+
+  <label>Activo:</label>
+  <input type="checkbox" [(ngModel)]="nuevoUsuario.activo" name="activo" />
+
+  <div class="acciones">
+    <button type="submit" class="boton-principal">Crear con Email</button>
+    <button type="button" class="boton-secundario" (click)="cancelar()">Cancelar</button>
+  </div>
+</form>
+
+<!-- Botones para Google y GitHub -->
+<div *ngIf="tipoRegistro !== 'email'" class="acciones">
+  <label>Nombre:</label>
+  <input [(ngModel)]="nombreSocial" name="nombreSocial" required />
+
+  <label>Apellido:</label>
+  <input [(ngModel)]="apellidoSocial" name="apellidoSocial" required />
+
+  <label>Rol:</label>
+  <select [(ngModel)]="rolSocial" name="rolSocial">
+    <option *ngFor="let rol of roles" [value]="rol">{{ rol }}</option>
+  </select>
+
+  <button class="boton-principal" (click)="crearConGoogle()">Crear con Google</button>
+  <button class="boton-principal" (click)="crearConGitHub()">Crear con GitHub</button>
+  <button class="boton-secundario" (click)="cancelar()">Cancelar</button>
+</div>
+
+<!-- Selector de tipo de registro -->
+<div class="tipo-registro">
+  <label>Tipo de registro:</label>
+  <select [(ngModel)]="tipoRegistro">
+    <option value="email">Correo y contraseña</option>
+    <option value="google">Google</option>
+    <option value="github">GitHub</option>
+  </select>
+</div>

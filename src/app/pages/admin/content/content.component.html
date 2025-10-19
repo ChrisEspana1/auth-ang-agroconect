@@ -1,0 +1,60 @@
+<div class="cabecera">
+  <h2>Gestión de Contenidos del Curso</h2>
+  <div class="botones-acciones">
+    <button class="boton-principal" (click)="toggleFormularioNuevo()">
+      {{ mostrarFormularioNuevo ? 'Ocultar formulario' : 'Agregar nuevo contenido' }}
+    </button>
+    <button class="boton-principal" (click)="volverEdicionCurso()">
+      Regresar a la edición del curso
+    </button>
+  </div>
+</div>
+<!-- Formulario de nuevo contenido -->
+<div *ngIf="mostrarFormularioNuevo" class="formulario-curso">
+  <form (ngSubmit)="agregarContenido()">
+    <label>Título:</label>
+    <input [(ngModel)]="nuevoContenido.titulo" name="nuevoTitulo" required />
+
+    <label>Descripción:</label>
+    <textarea [(ngModel)]="nuevoContenido.descripcion" name="nuevoDescripcion" required></textarea>
+
+    <label>URL Recurso:</label>
+    <input [(ngModel)]="nuevoContenido.url_recurso" name="nuevoUrl" required />
+
+    <button type="submit" class="boton-principal">Guardar contenido</button>
+  </form>
+</div>
+
+<!-- Lista de contenidos existentes -->
+<div *ngIf="!mostrarFormularioNuevo">
+  <div *ngIf="contenidos.length > 0; else sinContenidos">
+    <div *ngFor="let contenido of contenidos; let i = index" class="contenido-card">
+      <ng-container *ngIf="editandoIndice === i; else vistaContenido">
+        <form class="formulario-curso" (ngSubmit)="guardarCambios(i)">
+          <label>Título:</label>
+          <input [(ngModel)]="contenido.titulo" name="titulo{{i}}" required />
+
+          <label>Descripción:</label>
+          <textarea [(ngModel)]="contenido.descripcion" name="descripcion{{i}}" required></textarea>
+
+          <label>URL Recurso:</label>
+          <input [(ngModel)]="contenido.url_recurso" name="url{{i}}" required />
+
+          <button type="submit" class="boton-principal">Guardar</button>
+          <button type="button" class="boton-secundario" (click)="cancelarEdicion()">Cancelar</button>
+        </form>
+      </ng-container>
+
+      <ng-template #vistaContenido>
+        <h3>{{ contenido.titulo }}</h3>
+        <p><strong>Descripción:</strong> {{ contenido.descripcion }}</p>
+        <p><strong>Recurso:</strong> <a [href]="contenido.url_recurso" target="_blank">{{ contenido.url_recurso }}</a></p>
+        <button class="boton-secundario" (click)="modificarContenido(i)">Modificar</button>
+      </ng-template>
+    </div>
+  </div>
+
+  <ng-template #sinContenidos>
+    <p>No hay contenidos disponibles para este curso.</p>
+  </ng-template>
+</div>

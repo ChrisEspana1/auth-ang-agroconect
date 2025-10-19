@@ -1,0 +1,20 @@
+<div *ngFor="let proveedor of proveedores" class="proveedor-card">
+  <h3>{{ proveedor.nombre }}</h3>
+  <p><strong>Servicio:</strong> {{ proveedor.servicio }}</p>
+  <p><strong>Contacto:</strong> {{ proveedor.contacto }}</p>
+
+  <!-- Mostrar solo si el tipo de contacto es WhatsApp -->
+  <button *ngIf="proveedor.tipo_contacto === 'whatsapp'" 
+          (click)="abrirWhatsapp(proveedor.contacto)"
+          class="btn-whatsapp">
+    Contactar por WhatsApp
+  </button>
+
+  <!-- Mostrar solo si el tipo de contacto es Email -->
+  <button *ngIf="proveedor.tipo_contacto === 'email'" 
+          (click)="enviarEmail(proveedor.contacto)"
+          class="btn-email">
+    Contactar por Email
+  </button>
+
+</div>

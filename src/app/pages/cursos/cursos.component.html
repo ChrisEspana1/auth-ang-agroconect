@@ -1,0 +1,58 @@
+<body>
+  <!-- Banner de la sección de cursos -->
+  <section class="courses-header">
+    <h1>Cursos Agropecuarios</h1>
+    <p>Explora nuestros cursos organizados por cultivos y técnicas agropecuarias.</p>
+  </section>
+
+  <!-- Contenedor principal: Sidebar y Lista de cursos -->
+  <div class="container">
+    <!-- Sidebar de filtros -->
+    <aside class="sidebar">
+      <h2>Filtrar Cursos</h2>
+      <div class="filter-group">
+        <label for="categoria">Categoría</label>
+        <select id="categoria" [(ngModel)]="filtroCategoria">
+          <option value="todos">Todos</option>
+          <option value="cultivo">Cultivo</option>
+          <option value="riego">Riego</option>
+          <option value="fumigacion">Fumigación</option>
+          <option value="cosecha">Cosecha</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="nivel">Nivel</label>
+        <select id="nivel" [(ngModel)]="filtroNivel">
+          <option value="todos">Todos</option>
+          <option value="principiante">Principiante</option>
+          <option value="intermedio">Intermedio</option>
+          <option value="avanzado">Avanzado</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="buscar">Buscar Curso</label>
+        <input type="text" id="buscar" [(ngModel)]="filtroTexto" placeholder="Ingrese palabra clave">
+      </div>
+      <button class="btn" (click)="aplicarFiltros()">Aplicar Filtros</button>
+    </aside>
+
+
+    <!-- Listado de cursos dinámico -->
+    <section class="courses-list">
+      <div class="course-card" *ngFor="let curso of cursosPaginados">
+        <h3>{{ curso.titulo }}</h3>
+        <p>{{ curso.descripcion }}</p>
+        <a class="btn" (click)="verCurso(curso.id)">Ver Más</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Paginación estilo Google -->
+  <div class="pagination">
+    <button *ngFor="let page of paginas" (click)="cambiarPagina(page)" [class.active]="paginaActual === page">
+      {{ page }}
+    </button>
+  </div>
+</body>

@@ -1,0 +1,16 @@
+<div class="admin-dashboard">
+  <aside class="sidebar">
+    <h4>Panel de Administración</h4>
+    <nav>
+      <ul>
+        <li><button (click)="navigateTo('users')">Gestión de Usuarios</button></li>
+        <li><button (click)="navigateTo('courses')">Gestión de Cursos</button></li>
+        <li><button (click)="navigateTo('providers')">Gestión de Proveedores</button></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

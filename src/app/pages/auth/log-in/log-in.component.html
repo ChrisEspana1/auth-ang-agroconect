@@ -1,0 +1,16 @@
+<div class="form">
+  <div class="form__container">
+    <div class="header-row">
+      <img src="assets/images/agroconecta.png" alt="Login visual" class="login-image" />
+      <h1>Log in</h1>
+    </div>
+
+    <span class="small-text providers">Accede con Google o GitHub</span>
+    <app-button-providers [isLogin]="true"></app-button-providers>
+
+    <span class="small-text log-in-redirect">
+      ¿No tienes una cuenta aún?
+      <a routerLink="/auth/sign-up">Regístrate</a>
+    </span>
+  </div>
+</div>

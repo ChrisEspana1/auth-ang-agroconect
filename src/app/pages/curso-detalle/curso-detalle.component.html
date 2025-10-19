@@ -1,0 +1,48 @@
+<section class="course-header" *ngIf="curso">
+  <h1>{{ curso.titulo }}</h1>
+  <p>{{ curso.descripcion }}</p>
+</section>
+
+<div class="container" *ngIf="curso">
+    <!-- Contenido principal del curso -->
+  <div class="course-content">
+    <!-- Descripción del curso -->
+
+<section class="course-description">
+  <div class="descripcion-header">
+    <button class="btn-volver" (click)="volver()">← Volver a Cursos</button>
+    <h2>Descripción del Curso</h2>
+  </div>
+  <p>{{ curso.descripcion }}</p>
+</section>
+
+    <!-- Video tutorial -->
+    <section class="course-video">
+      <h2>Video Tutorial</h2>
+      <iframe [src]="curso.url_video | safeUrl" allowfullscreen title="Video del curso"></iframe>
+    </section>
+
+    <!-- Tabla de Contenidos -->
+    <section class="course-toc">
+      <h2>Tabla de Contenidos</h2>
+      <ul>
+        <li *ngFor="let item of contenidos">
+          <a [href]="item.url_recurso" target="_blank" title="{{ item.descripcion }}">
+            {{ item.titulo }}
+          </a>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- Panel lateral: Contactar a Proveedores -->
+  <aside class="course-sidebar">
+    <h2>Contacta Proveedores</h2>
+    <p>
+      Si deseas asesoría o productos para el cultivo, inicia un chat directo con proveedores asociados al curso.
+    </p>
+
+    <!-- Componente que lista los proveedores -->
+    <app-curso-proveedores></app-curso-proveedores>
+  </aside>
+</div>

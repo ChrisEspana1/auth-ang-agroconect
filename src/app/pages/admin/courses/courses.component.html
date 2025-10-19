@@ -1,0 +1,137 @@
+<div class="cabecera">
+  <h2>Gestión de Cursos</h2>
+  <button class="boton-principal" (click)="mostrarFormularioNuevo = true">Nuevo curso</button>
+
+</div>
+
+<!-- Formulario de creación -->
+<div *ngIf="mostrarFormularioNuevo" class="formulario-curso">
+  <h2>Crear nuevo curso</h2>
+  <form (ngSubmit)="crearCurso()">
+    <label for="titulo">Título:</label>
+    <input id="titulo" [(ngModel)]="nuevoCurso.titulo" name="titulo" required />
+
+    <label for="descripcion">Descripción:</label>
+    <textarea id="descripcion" [(ngModel)]="nuevoCurso.descripcion" name="descripcion" required></textarea>
+
+    <label for="categoria">Categoría:</label>
+    <select id="categoria" [(ngModel)]="nuevoCurso.categoria" name="categoria" required>
+      <option value="">Selecciona una categoría</option>
+      <option value="cultivo">Cultivo</option>
+      <option value="riego">Riego</option>
+      <option value="fumigacion">Fumigación</option>
+      <option value="cosecha">Cosecha</option>
+      <option value="plagas">Plagas</option>
+    </select>
+
+
+    <label for="nivel">Nivel:</label>
+    <select id="nivel" [(ngModel)]="nuevoCurso.nivel" name="nivel" required>
+      <option value="">Selecciona un nivel</option>
+      <option value="principiante">Principiante</option>
+      <option value="intermedio">Intermedio</option>
+      <option value="avanzado">Avanzado</option>
+    </select>
+
+    <label for="url_video">URL del video:</label>
+    <input id="url_video" [(ngModel)]="nuevoCurso.url_video" name="url_video" required />
+
+    <label for="estado">Estado:</label>
+    <select id="estado" [(ngModel)]="nuevoCurso.estado" name="estado" required>
+      <option value="activo">Activo</option>
+      <option value="inactivo">Inactivo</option>
+    </select>
+
+    <button type="submit" class="boton-principal">Guardar curso</button>
+    <button type="button" class="boton-secundario" (click)="mostrarFormularioNuevo = false">Cancelar</button>
+  </form>
+</div>
+
+<!-- Tabla de cursos solo visible si NO se está creando NI editando un curso -->
+<div class="tabla-cursos" *ngIf="!mostrarFormularioNuevo && !cursoEditando">
+  <h2>Lista de Cursos</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Título</th>
+        <th>Descripción</th>
+        <th>Categoría</th>
+        <th>Nivel</th>
+        <th>Video</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let curso of cursosPaginados">
+        <td>{{ curso.id }}</td>
+        <td>{{ curso.titulo }}</td>
+        <td>{{ curso.descripcion }}</td>
+        <td>{{ curso.categoria }}</td>
+        <td>{{ curso.nivel }}</td>
+        <td><a [href]="curso.url_video" target="_blank">Ver video</a></td>
+        <td>{{ curso.estado }}</td>
+        <td>
+          <button class="boton-secundario" (click)="editarCurso(curso)">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Paginación -->
+  <div class="paginacion">
+    <button *ngFor="let pagina of paginas" [class.activa]="pagina === paginaActual" (click)="cambiarPagina(pagina)">
+      {{ pagina }}
+    </button>
+  </div>
+</div>
+
+<!-- Formulario de edición de curso -->
+<div *ngIf="cursoEditando" class="formulario-curso">
+  <h2>Editar curso</h2>
+  <form (ngSubmit)="guardarEdicion()">
+    <label for="tituloEditado">Título:</label>
+    <input id="tituloEditado" [(ngModel)]="cursoEditando.titulo" name="tituloEditado" required />
+
+    <label for="descripcionEditada">Descripción:</label>
+    <textarea id="descripcionEditada" [(ngModel)]="cursoEditando.descripcion" name="descripcionEditada"
+      required></textarea>
+
+    <label for="categoriaEditada">Categoría:</label>
+    <select id="categoria" [(ngModel)]="cursoEditando.categoria" name="categoriaEditada" required>
+      <option value="">Selecciona una categoría</option>
+      <option value="cultivo">Cultivo</option>
+      <option value="riego">Riego</option>
+      <option value="fumigacion">Fumigación</option>
+      <option value="cosecha">Cosecha</option>
+      <option value="plagas">Plagas</option>
+    </select>
+
+    <label for="nivelEditado">Nivel:</label>
+    <select id="nivelEditado" [(ngModel)]="cursoEditando.nivel" name="nivelEditado" required>
+      <option value="">Selecciona un nivel</option>
+      <option value="principiante">Principiante</option>
+      <option value="intermedio">Intermedio</option>
+      <option value="avanzado">Avanzado</option>
+    </select>
+
+    <label for="url_videoEditada">URL del video:</label>
+    <input id="url_videoEditada" [(ngModel)]="cursoEditando.url_video" name="url_videoEditada" required />
+
+    <label for="estado">Estado:</label>
+    <select id="estado" [(ngModel)]="cursoEditando.estado" name="estado" required>
+      <option value="activo">Activo</option>
+      <option value="inactivo">Inactivo</option>
+    </select>
+
+    <button type="submit" class="boton-principal">Guardar cambios</button>
+    <button type="button" class="boton-secundario" *ngIf="cursoEditando" (click)="irAGestionContenido(cursoEditando.id)">
+      Gestionar contenido
+    </button>
+    <button type="button" class="boton-secundario" *ngIf="cursoEditando" (click)="irAGestionKeywords(cursoEditando.id)">
+      Gestionar palabras clave
+    </button>
+    <button type="button" class="boton-secundario" (click)="cancelarEdicion()">Cancelar</button>
+  </form>
+</div>
