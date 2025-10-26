@@ -1,0 +1,45 @@
+:host {
+  display: block;
+  background-color: #e5e0d8;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Contenedor general de las pestañas */
+.mat-tab-group {
+  background-color: transparent; /* sin fondo para respetar la línea del título */
+}
+
+/* Etiquetas de pestañas */
+.mat-tab-label {
+  color: #725c3a;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Pestaña activa */
+.mat-tab-label-active {
+  background-color: #a7c796;
+  color: #fff;
+  border-radius: 4px;
+}
+
+/* Contenido de cada pestaña */
+.mat-tab-body {
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid #809671;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+/* Títulos dentro de cada subcomponente */
+h2, h3 {
+  color: #725c3a;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #d2a880;
+  padding-bottom: 0.5rem;
+  background-color: #f3e5ab;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}

@@ -1,15 +1,34 @@
+
+/* Reset y estilos generales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f4f8;
+  color: #333;
+}
+
 .form {
-  background-color: #000;
+  background-color: #f0f4f8;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  padding: 2rem;
 }
 
 .form__container {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
   max-width: 400px;
+  width: 100%;
 }
 
 .header-row {
@@ -20,8 +39,9 @@
   margin-bottom: 1.5rem;
 }
 
-.signup-image {
-  width: 60px;
+.signup-image,
+.login-image {
+  width: 80px;
   height: auto;
   object-fit: contain;
 }
@@ -29,21 +49,21 @@
 h1 {
   font-size: 2rem;
   margin: 0;
+  color: #3f51b5;
 }
 
 .small-text {
   display: block;
   margin-top: 1rem;
   font-size: 0.9rem;
-  color: #ccc;
+  color: #666;
 }
 
 a {
-  color: #90caf9;
+  color: #5c6bc0;
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
 }
-

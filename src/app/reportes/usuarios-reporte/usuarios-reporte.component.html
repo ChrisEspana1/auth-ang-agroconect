@@ -1,0 +1,18 @@
+<div class="grafica-container">
+  <div class="filter">
+    <label for="filtro">Agrupar por:</label>
+    <select id="filtro" [(ngModel)]="filtro" (change)="loadData()">
+      <option value="dia">Día</option>
+      <option value="mes">Mes</option>
+    </select>
+    <button class="btn-export" (click)="exportarPDF()">Exportar PDF</button>
+  </div>
+
+  <div id="grafico-usuarios">
+    <canvas baseChart
+      [data]="lineChartData"
+      [options]="lineChartOptions"
+      [type]="'line'">
+    </canvas>
+  </div>
+</div>

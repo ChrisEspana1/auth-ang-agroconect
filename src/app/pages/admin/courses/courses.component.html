@@ -1,8 +1,11 @@
 <div class="cabecera">
   <h2>Gestión de Cursos</h2>
-  <button class="boton-principal" (click)="mostrarFormularioNuevo = true">Nuevo curso</button>
-
+  <div class="boton-nuevocurso">
+    <button class="boton-principal" (click)="mostrarFormularioNuevo = true">(+) Nuevo curso</button>
 </div>
+</div>
+
+
 
 <!-- Formulario de creación -->
 <div *ngIf="mostrarFormularioNuevo" class="formulario-curso">
@@ -131,6 +134,9 @@
     </button>
     <button type="button" class="boton-secundario" *ngIf="cursoEditando" (click)="irAGestionKeywords(cursoEditando.id)">
       Gestionar palabras clave
+    </button>
+    <button type="button" class="boton-secundario" *ngIf="cursoEditando" (click)="irAGestionProveedores(cursoEditando.id)">
+      Gestionar proveedores
     </button>
     <button type="button" class="boton-secundario" (click)="cancelarEdicion()">Cancelar</button>
   </form>

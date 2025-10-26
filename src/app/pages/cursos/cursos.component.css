@@ -1,5 +1,5 @@
 .courses-header {
-  background: linear-gradient(135deg, #45d8b4, #060b10);
+  background: linear-gradient(135deg, #a7c796, #725c3a); /* verde claro a marrón oscuro */
   color: #fff;
   text-align: center;
   padding: 2rem 1rem;
@@ -19,7 +19,7 @@
   padding: 0 1rem;
 }
 .sidebar {
-  background: #222;
+  background: #809671; /* verde oliva suave */
   color: #fff;
   border-radius: 8px;
   padding: 1.5rem 1rem;
@@ -32,9 +32,9 @@
 }
 
 .sidebar .btn {
-  background-color: #fff;
-  color: #222;
-  border: 2px solid #ccc;
+  background-color: #f3e5ab; /* amarillo pálido */
+  color: #725c3a; /* marrón oscuro */
+  border: 2px solid #d2a880; /* marrón claro */
   padding: 0.6rem 1.2rem;
   border-radius: 4px;
   font-weight: 600;
@@ -44,9 +44,8 @@
   text-align: center;
 }
 
-
 .sidebar .btn:hover {
-  background-color: #f0f0f0;
+  background-color: #e5e0d8; /* beige claro */
   color: #000;
 }
 
@@ -63,7 +62,7 @@
   width: 100%;
   padding: 0.5rem;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid #d2a880; /* marrón claro */
   margin-bottom: 0.5rem;
 }
 .courses-list {
@@ -75,10 +74,10 @@
   flex: 1;
 }
 .course-card {
-  background: #222;
+  background: #809671; /* verde oliva suave */
   color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(114, 92, 58, 0.2); /* sombra marrón oscuro */
   padding: 16px;
   width: 300px;
   display: flex;
@@ -94,8 +93,8 @@
   margin-bottom: 12px;
 }
 .course-card .btn {
-  background: #45d8b4;
-  color: #222;
+  background: #f3e5ab; /* amarillo pálido */
+  color: #725c3a; /* marrón oscuro */
   border: none;
   border-radius: 4px;
   padding: 8px 16px;
@@ -105,7 +104,7 @@
   transition: background 0.2s;
 }
 .course-card .btn:hover {
-  background: #2bbf99;
+  background: #e5e0d8; /* beige claro */
 }
 .pagination {
   display: flex;
@@ -114,7 +113,7 @@
   margin: 2rem 0;
 }
 .pagination button {
-  background: #222;
+  background: #a7c796; /* verde claro */
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -125,11 +124,11 @@
 }
 .pagination button.active,
 .pagination button:hover {
-  background: #45d8b4;
-  color: #222;
+  background: #809671; /* verde oliva suave */
+  color: #fff;
 }
 footer {
-  background: #69f0ae;
+  background: #d2a880; /* marrón claro */
   color: #222222;
   text-align: center;
   padding: 1rem 0;

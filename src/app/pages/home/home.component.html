@@ -5,7 +5,7 @@
 
   <div class="logo">
     <img src="assets/images/agroconecta.png" alt="Logotipo AgroConecta" (click)="goHome()" style="cursor:pointer;">
-    <span class="spacer">AgroConecta</span>
+    <span class="spacer"  (click)="goHome()">AgroConecta</span>
   </div>
 
   <div class="toolbar-buttons desktop-only">
@@ -28,6 +28,7 @@
 
     <!-- Botón visible solo para administradores -->
     <button *ngIf="isAdmin" mat-button (click)="redirectToAdmin()">Panel de Administración</button>
+    <button *ngIf="isAdmin" mat-button (click)="redirectToReportes()">Reportes</button>
 
     <button mat-button (click)="logOut()">Log out</button>
   </mat-sidenav>

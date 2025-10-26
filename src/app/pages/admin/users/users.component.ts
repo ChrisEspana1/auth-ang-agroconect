@@ -8,11 +8,10 @@ import { UserFormDialogComponent } from 'src/app/components/user-form-dialog/use
 import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css'],
-  standalone: true,
-  imports: [CommonModule, FormsModule, MatDialogModule]
+    selector: 'app-users',
+    templateUrl: './users.component.html',
+    styleUrls: ['./users.component.css'],
+    imports: [CommonModule, FormsModule, MatDialogModule]
 })
 
 export class UsersComponent implements OnInit {

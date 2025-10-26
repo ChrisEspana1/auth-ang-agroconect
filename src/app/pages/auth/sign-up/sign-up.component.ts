@@ -26,20 +26,19 @@ interface SignUpForm {
 }
 
 @Component({
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    RouterModule,
-    MatSnackBarModule,
-    ButtonProviders
-],
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  providers: [],
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        RouterModule,
+        MatSnackBarModule,
+        ButtonProviders
+    ],
+    selector: 'app-sign-up',
+    templateUrl: './sign-up.component.html',
+    providers: []
 })
 export default class SignUpComponent {
   hide = true;

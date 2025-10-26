@@ -10,11 +10,12 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule } from '@angular/forms';
 const UI_MODULES = importProvidersFrom([
   BrowserAnimationsModule,
   CommonModule, // ← necesario para el pipe async
   FormsModule,
+  ReactiveFormsModule,
   MatTableModule,
   MatSelectModule,
   MatSlideToggleModule,

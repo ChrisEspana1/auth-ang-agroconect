@@ -1,8 +1,17 @@
 export interface Proveedor {
-  id: number;
-  curso_id: string;
-  nombre: string;
-  contacto: string;
-  servicio: string;
-  tipo_contacto: 'whatsapp' | 'email';
+    curso_proveedor_id: number;
+    id: number;
+    nombre: string;
+    contacto: string;
+    servicio: string;
+    tipo_contacto: 'email' | 'telefono' | 'whatsapp'; // Enum simulado
+    creado_en: string;
+    actualizado_en: string;
+}
+
+export interface CursoProveedor {
+    cursoId: string;
+    proveedorId: number;
+    activo: boolean;
+    notas: string;
 }

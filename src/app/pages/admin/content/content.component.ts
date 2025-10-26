@@ -6,15 +6,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  standalone: true,
-  selector: 'app-content',
-  templateUrl: './content.component.html',
-  styleUrls: ['./content.component.css'],
-  imports: [CommonModule, FormsModule]
+    selector: 'app-content',
+    templateUrl: './content.component.html',
+    styleUrls: ['./content.component.css'],
+    imports: [CommonModule, FormsModule]
 })
 export class ContentComponent implements OnInit {
   mostrarFormularioNuevo: boolean = false;
   cursoId!: string;
+  cursoNombre!: string;
   contenidos: Contenido[] = [];
   editandoIndice: number | null = null;
   nuevoContenido: Contenido = {
@@ -30,6 +30,12 @@ export class ContentComponent implements OnInit {
   ngOnInit(): void {
     this.cursoId = this.route.snapshot.paramMap.get('id')!;
     this.nuevoContenido.curso_id = this.cursoId;
+    this.cursoService.getCursoPorId(this.cursoId).subscribe({
+      next: (curso) => {
+      this.cursoNombre = curso.titulo;
+},
+    error: (err) => console.error('Error al obtener el curso', err)
+  });
     this.cargarContenidos();
   }
 

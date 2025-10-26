@@ -13,11 +13,10 @@ import { CursoProveedoresComponent } from '../curso-proveedores/curso-proveedore
 
 
 @Component({
-  standalone: true,
-  imports: [CommonModule, SafeUrlPipe, CursoProveedoresComponent],
-  selector: 'app-curso-detalle',
-  templateUrl: './curso-detalle.component.html',
-  styleUrls: ['./curso-detalle.component.css']
+    imports: [CommonModule, SafeUrlPipe, CursoProveedoresComponent],
+    selector: 'app-curso-detalle',
+    templateUrl: './curso-detalle.component.html',
+    styleUrls: ['./curso-detalle.component.css']
 })
 
 export class CursoDetalleComponent implements OnInit {
@@ -55,6 +54,9 @@ export class CursoDetalleComponent implements OnInit {
 abrirWhatsapp(numero: string): void {
   const url = `https://wa.me/${numero}`;
   window.open(url, '_blank');
+}
+darFeedback(): void {
+this.router.navigate([`${this.curso?.id}/feedback`]);
 }
 
 enviarEmail(correo: string): void {

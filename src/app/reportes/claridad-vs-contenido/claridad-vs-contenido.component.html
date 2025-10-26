@@ -1,0 +1,18 @@
+<div class="grafica-container">
+  <div class="filter">
+    <label class="titulo" for="curso">Filtrar por curso:</label>
+    <select class="selector" id="curso" [value]="selectedCurso" (change)="onCursoChange($event)">
+      <option value="todos">Todos</option>
+      <option *ngFor="let curso of cursos" [value]="curso.curso_id">{{ curso.nombre_curso }}</option>
+    </select>
+    <button class="btn-refresh" (click)="exportarPDF()">Exportar PDF</button>
+  </div>
+
+  <div id="grafico-claridad">
+    <canvas baseChart
+      [data]="scatterChartData"
+      [options]="scatterChartOptions"
+      [type]="'scatter'">
+    </canvas>
+  </div>
+</div>

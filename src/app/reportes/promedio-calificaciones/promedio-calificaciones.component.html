@@ -1,0 +1,13 @@
+<div class="grafica-container">
+  <div class="cabecera">
+    <h2>Calificaciones por Curso</h2>
+    <button (click)="exportarPDF()">Exportar como PDF</button>
+  </div>
+  <div id="grafico-promedio">
+    <canvas baseChart
+      [data]="barChartData"
+      [options]="barChartOptions"
+      [type]="'bar'">
+    </canvas>
+  </div>
+</div>

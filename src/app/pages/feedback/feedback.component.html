@@ -1,0 +1,75 @@
+<div class="feedback-container" *ngIf="!enviado; else gracias">
+  <h2>Encuesta de Satisfacción del Curso</h2>
+
+  <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+    <input formControlName="nombre" type="hidden" />
+    <input formControlName="correo" type="hidden" />
+    <!-- Campo oculto para enviar el ID -->
+    <input formControlName="cursoId" type="hidden" />
+
+
+    <div class="form-group">
+      <label>¿Qué tan satisfecho(a) estás con el contenido del curso?</label>
+      <input formControlName="contenido" type="range" min="1" max="5" />
+    </div>
+
+    <div class="form-group">
+      <label>¿El contenido fue claro y fácil de entender?</label>
+      <input formControlName="claridad" type="range" min="1" max="5" />
+    </div>
+
+    <div class="form-group">
+      <label>¿El contenido fue actualizado y relevante?</label>
+      <select formControlName="actualidad">
+        <option value="Sí">Sí</option>
+        <option value="No">No</option>
+        <option value="Parcialmente">Parcialmente</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>¿Qué temas te gustaría que se profundizaran más?</label>
+      <textarea formControlName="temasProfundizar"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>¿Cómo calificarías la metodología utilizada?</label>
+      <input formControlName="metodologia" type="range" min="1" max="5" />
+    </div>
+
+    <div class="form-group">
+      <label>¿Los recursos fueron útiles?</label>
+      <select formControlName="recursosUtiles">
+        <option value="Sí">Sí</option>
+        <option value="No">No</option>
+        <option value="Algunos sí, otros no">Algunos sí, otros no</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>¿Qué mejorarías en la forma en que se impartió el curso?</label>
+      <textarea formControlName="mejoras"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>¿Recomendarías este curso?</label>
+      <select formControlName="recomendacion">
+        <option value="Sí">Sí</option>
+        <option value="No">No</option>
+        <option value="Tal vez">Tal vez</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Comentarios adicionales</label>
+      <textarea formControlName="comentariosAdicionales"></textarea>
+    </div>
+
+    <button type="submit" [disabled]="feedbackForm.invalid">Enviar</button>
+    <button (click)="regresarAlCurso()">Regresar al curso</button>
+  </form>
+</div>
+
+<ng-template #gracias>
+  <h3>¡Gracias por tu retroalimentación!</h3>
+</ng-template>

@@ -1,0 +1,14 @@
+<div class="recomendaciones-container">
+  <div class="cabecera">
+    <h2>Recomendaciones por Curso</h2>
+      <button (click)="exportarPDF()">Exportar como PDF</button>
+  </div>
+
+  <div id="grafico-recomendaciones">
+    <canvas baseChart
+      [data]="barChartData"
+      [options]="barChartOptions"
+      [type]="'bar'">
+    </canvas>
+  </div>
+</div>

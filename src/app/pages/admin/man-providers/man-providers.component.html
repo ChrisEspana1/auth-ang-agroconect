@@ -1,0 +1,64 @@
+<div class="cabecera">
+  <h2>Gestión de proveedores</h2>
+  <button (click)="toggleFormulario()">
+    {{ mostrarFormulario ? 'Regresar al listado' : 'Agregar nuevo proveedor' }}
+  </button>
+</div>
+
+<!-- Tabla de proveedores -->
+<div *ngIf="!mostrarFormulario">
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Contacto</th>
+        <th>Servicio</th>
+        <th>Tipo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let proveedor of proveedoresPaginados">
+        <td>{{ proveedor.nombre }}</td>
+        <td>{{ proveedor.contacto }}</td>
+        <td>{{ proveedor.servicio }}</td>
+        <td>{{ proveedor.tipo_contacto }}</td>
+        <td>
+          <button (click)="editarProveedor(proveedor)">Editar</button>
+          <button (click)="eliminarProveedor(proveedor.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Paginación -->
+  <div class="paginacion">
+    <button (click)="cambiarPagina('anterior')" [disabled]="paginaActual === 1">Anterior</button>
+    <span>Página {{ paginaActual }}</span>
+    <button (click)="cambiarPagina('siguiente')" [disabled]="paginaActual * proveedoresPorPagina >= proveedores.length">Siguiente</button>
+  </div>
+</div>
+
+<!-- Formulario de creación/edición -->
+<div *ngIf="mostrarFormulario">
+  <form (ngSubmit)="guardarProveedor()">
+    <label>Nombre:</label>
+    <input [(ngModel)]="proveedorForm.nombre" name="nombre" required />
+
+    <label>Contacto:</label>
+    <input [(ngModel)]="proveedorForm.contacto" name="contacto" required />
+
+    <label>Servicio:</label>
+    <input [(ngModel)]="proveedorForm.servicio" name="servicio" required />
+
+    <label>Tipo de contacto:</label>
+    <select [(ngModel)]="proveedorForm.tipo_contacto" name="tipo_contacto" required>
+      <option value="email">Email</option>
+      <option value="telefono">Teléfono</option>
+      <option value="whatsapp">WhatsApp</option>
+    </select>
+
+    <button type="submit">{{ editandoId ? 'Actualizar' : 'Crear' }} proveedor</button>
+    <button type="button" (click)="toggleFormulario()">Cancelar</button>
+  </form>
+</div>

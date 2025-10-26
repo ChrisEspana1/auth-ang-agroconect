@@ -8,14 +8,30 @@ import { Firestore, doc, getDoc } from '@angular/fire/firestore';
 export const authGuard: CanActivateFn = () => {
   const router = inject(Router);
   const authService = inject(AuthService);
+  const firestore = inject(Firestore);
 
-  return from(authService.authState$).pipe(
-    map(user => {
+  return authService.authState$.pipe(
+    switchMap(user => {
       if (!user) {
-        router.navigateByUrl('auth/log-in');
-        return false;
+        router.navigateByUrl('/auth/log-in');
+        return of(false);
       }
-      return true;
+
+      const userDocRef = doc(firestore, `usuarios/${user.uid}`);
+      return from(getDoc(userDocRef)).pipe(
+        map(snapshot => {
+          const data = snapshot.data();
+          const activo = data?.['activo']; // o usa 'estado' === 'activo' si así lo tienes
+
+          if (activo === false) {
+            alert('Tu cuenta está inactiva. Por favor contacta al administrador.');
+            router.navigateByUrl('/auth/log-in');
+            return false;
+          }
+
+          return true;
+        })
+      );
     })
   );
 };
@@ -43,7 +59,7 @@ export const adminGuard: CanActivateFn = () => {
   return authService.authState$.pipe(
     switchMap(user => {
       if (!user) {
-        router.navigateByUrl('auth/log-in');
+        router.navigateByUrl('/auth/log-in');
         return of(false);
       }
 
@@ -52,8 +68,9 @@ export const adminGuard: CanActivateFn = () => {
         map(snapshot => {
           const data = snapshot.data();
           const role = data?.['rol'];
+          const activo = data?.['activo'];
 
-          if (role === 'admin') {
+          if (role === 'admin' && activo !== false) {
             return true;
           } else {
             router.navigateByUrl('/');
@@ -64,6 +81,4 @@ export const adminGuard: CanActivateFn = () => {
     })
   );
 };
-
-
-
+``

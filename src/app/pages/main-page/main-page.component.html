@@ -1,45 +1,28 @@
+<section class="hero">
+  <h1>Bienvenido a AgroConecta</h1>
+  <p>Conectando el conocimiento agropecuario con innovación y tecnología.</p>
+</section>
 
- <!-- Sección hero -->
-  <section class="hero">
-    <h1>Bienvenido a AgroConecta</h1>
-    <p>Conectando el conocimiento agropecuario con innovación y tecnología.</p>
+<div class="container">
+  <section class="section">
+    <h2>Sobre la Plataforma</h2>
+    <p>AgroConecta es una plataforma digital orientada a fortalecer la educación agropecuaria en comunidades locales. A través de cursos estructurados por categorías de cultivos, se promueve la formación técnica y el intercambio de experiencias entre productores, estudiantes y proveedores. La solución se fundamenta en el uso de entornos gratuitos y de herramientas de código abierto, asegurando que el acceso al conocimiento no esté limitado por barreras económicas.</p>
   </section>
 
-  <!-- Contenido principal -->
-  <div class="container">
-    <section class="section">
-      <h2>Sobre la Plataforma</h2>
-      <p>AgroConecta es una plataforma digital orientada a fortalecer la educación agropecuaria en comunidades locales. A través de cursos estructurados por categorías de cultivos, se promueve la formación técnica y el intercambio de experiencias entre productores, estudiantes y proveedores. La solución se fundamenta en el uso de entornos gratuitos y de herramientas de código abierto, asegurando que el acceso al conocimiento no esté limitado por barreras económicas.</p>
-    </section>
-
-    <section class="section">
-      <h2>Cursos Destacados</h2>
-      <div class="grid">
-        <div class="course-panel">
-          <h3>Siembra y Cuidado del Café</h3>
-          <p>Aprende técnicas efectivas para el cultivo y manejo del café, con material didáctico y videos explicativos.</p>
-        </div>
-        <div class="course-panel">
-          <h3>Manejo de Cultivos Orgánicos</h3>
-          <p>Descubre métodos sostenibles y saludables para la producción de alimentos orgánicos.</p>
-        </div>
-        <div class="course-panel">
-          <h3>Técnicas de Riego Eficiente</h3>
-          <p>Optimiza el uso del agua en tus cultivos con estrategias basadas en metodologías probadas.</p>
-        </div>
+  <section class="section">
+    <h2>Cursos Destacados</h2>
+    <div class="grid">
+      <div class="course-panel" *ngFor="let curso of cursosDestacados">
+        <h3>{{ curso.nombre_curso }}</h3>
+        <p>{{ curso.descripcion }}</p>
+        <button (click)="verCurso(curso.curso_id)">Ver Curso</button>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section">
-      <h2>Foro y Comunicación</h2>
-      <p>La plataforma promueve la interacción a través de foros de discusión y chats privados, donde estudiantes y proveedores pueden intercambiar experiencias, resolver dudas y establecer conexiones estratégicas que impulsen el desarrollo agropecuario.</p>
-    </section>
-  </div>
-  <script>
-    // JavaScript para el toggle del menú en dispositivos móviles
-    const menuToggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('nav');
-    menuToggle.addEventListener('click', () => {
-      nav.classList.toggle('active');
-    });
-  </script>
+  <section class="section">
+    <h2>Foro y Comunicación</h2>
+    <p>La plataforma promueve la interacción a través de foros de discusión y chats privados, donde estudiantes y proveedores pueden intercambiar experiencias, resolver dudas y establecer conexiones estratégicas que impulsen el desarrollo agropecuario.</p>
+  </section>
+</div>
+``

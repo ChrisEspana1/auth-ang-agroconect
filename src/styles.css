@@ -2,7 +2,7 @@
     --background: #fff;
     --green: #45d8b4;
     --dark-text: rgba(12, 42, 42);
-    --text: #fff;
+    --text: #808080;
   }
   
   html,
@@ -27,7 +27,7 @@
       margin-bottom: 30px;
     }
   
-    &__container {
+    .container {
       width: 100%;
       max-width: 400px;
     }

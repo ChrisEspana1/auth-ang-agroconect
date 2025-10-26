@@ -1,0 +1,56 @@
+:host{
+  background-color: white;
+}
+
+.grafica-container {
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 700px; /* Reducido para mejorar rendimiento */
+  margin: 0 auto;
+}
+
+.titulo {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.selector {
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.btn-refresh {
+  background-color: #FFCC80;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-refresh:hover {
+  background-color: #FBC02D;
+}
+
+canvas {
+  width: 100% !important;
+  height: auto !important;
+}
+
+@media (max-width: 768px) {
+  canvas {
+    height: 250px !important;
+  }
+}

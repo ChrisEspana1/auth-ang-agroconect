@@ -4,11 +4,10 @@ import { RouterOutlet } from "@angular/router";
 import { Router } from '@angular/router';
 
 @Component({
-  standalone: true,
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css'],
-  imports: [RouterOutlet]
+    selector: 'app-admin',
+    templateUrl: './admin.component.html',
+    styleUrls: ['./admin.component.css'],
+    imports: [RouterOutlet]
 })
 export class AdminComponent {
 

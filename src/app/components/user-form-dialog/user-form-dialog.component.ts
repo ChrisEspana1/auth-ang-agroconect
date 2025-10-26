@@ -7,11 +7,10 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  standalone: true,
-  selector: 'app-user-form-dialog',
-  templateUrl: './user-form-dialog.component.html',
-  styleUrls: ['./user-form-dialog.component.css'],
-  imports: [FormsModule, CommonModule, MatButtonModule]
+    selector: 'app-user-form-dialog',
+    templateUrl: './user-form-dialog.component.html',
+    styleUrls: ['./user-form-dialog.component.css'],
+    imports: [FormsModule, CommonModule, MatButtonModule]
 })
 export class UserFormDialogComponent {
   tipoRegistro: 'email' | 'google' | 'github' = 'email';

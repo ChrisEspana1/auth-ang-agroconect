@@ -1,19 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { CursoService } from 'src/app/services/curso.service';
 import { Curso } from 'src/app/models/cursos.model';
-import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule, NgIf, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { NgIf } from '@angular/common';
-
 
 @Component({
-  standalone: true,
   selector: 'app-courses',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    NgIf,
+    NgFor
+  ],
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.css'],
-  imports: [CommonModule, FormsModule, HttpClientModule, NgIf]
+  styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
   cursos: Curso[] = [];
@@ -26,7 +29,7 @@ export class CoursesComponent implements OnInit {
   cursosPorPagina = 6;
   paginas: number[] = [];
 
-  constructor(private cursoService: CursoService, private router: Router) { }
+  constructor(private cursoService: CursoService, private router: Router) {}
 
   ngOnInit(): void {
     this.cursosPorPagina = window.innerWidth <= 768 ? 3 : 6;
@@ -69,6 +72,7 @@ export class CoursesComponent implements OnInit {
       alert('Por favor completa todos los campos obligatorios.');
     }
   }
+
   getCursoVacio(): Curso {
     return {
       id: '',
@@ -89,28 +93,33 @@ export class CoursesComponent implements OnInit {
     this.router.navigate(['/admin/keywords', id]);
   }
 
+  irAGestionProveedores(id: string): void {
+    this.router.navigate(['/admin/providers', id]);
+  }
+
   editarCurso(curso: Curso): void {
     this.cursoEditando = { ...curso };
     this.mostrarFormularioEdicion = true;
   }
+
   guardarEdicion(): void {
-  if (this.cursoEditando && this.validarCurso(this.cursoEditando)) {
-    this.cursoService.updateCurso(this.cursoEditando.id, this.cursoEditando).subscribe({
-      next: () => {
-        this.obtenerCursos();
-        this.cursoEditando = null;
-        this.mostrarFormularioEdicion = false;
-        alert('✅ Curso actualizado correctamente');
-      },
-      error: (err) => {
-        console.error('Error al actualizar curso:', err);
-        alert('❌ No se pudo actualizar el curso. Verifica la conexión o el servidor.');
-      }
-    });
-  } else {
-    alert('Por favor completa todos los campos obligatorios.');
+    if (this.cursoEditando && this.validarCurso(this.cursoEditando)) {
+      this.cursoService.updateCurso(this.cursoEditando.id, this.cursoEditando).subscribe({
+        next: () => {
+          this.obtenerCursos();
+          this.cursoEditando = null;
+          this.mostrarFormularioEdicion = false;
+          alert('✅ Curso actualizado correctamente');
+        },
+        error: (err) => {
+          console.error('Error al actualizar curso:', err);
+          alert('❌ No se pudo actualizar el curso. Verifica la conexión o el servidor.');
+        }
+      });
+    } else {
+      alert('Por favor completa todos los campos obligatorios.');
+    }
   }
-}
 
   cancelarEdicion(): void {
     this.cursoEditando = null;

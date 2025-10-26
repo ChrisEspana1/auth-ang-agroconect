@@ -1,0 +1,50 @@
+.grafica-container {
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 700px; /* Reducido para mejorar rendimiento */
+  margin: 0 auto;
+}
+h2 {
+  text-align: center;
+  margin-bottom: 16px;
+  color: #333333;
+}
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+canvas {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+  .grafica-container {
+    padding: 12px;
+  }
+
+  canvas {
+    height: 250px !important;
+  }
+}
+
+button {
+  margin-bottom: 12px;
+  padding: 8px 16px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1565c0;
+}

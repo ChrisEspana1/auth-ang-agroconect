@@ -9,6 +9,7 @@
     </button>
   </div>
 </div>
+<p>Esta es la lista de proveedores del curso: <strong>{{ cursoId }}-{{ cursoNombre }}</strong></p>
 <!-- Formulario de nuevo contenido -->
 <div *ngIf="mostrarFormularioNuevo" class="formulario-curso">
   <form (ngSubmit)="agregarContenido()">

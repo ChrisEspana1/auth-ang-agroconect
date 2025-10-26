@@ -4,10 +4,10 @@ import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
-const firebaseProviders: EnvironmentProviders = importProvidersFrom([
+const firebaseProviders: any[] = [
   provideFirebaseApp(() => initializeApp(environment.firebase)),
   provideAuth(() => getAuth()),
   provideFirestore(() => getFirestore())
-]);
+];
 
 export { firebaseProviders };

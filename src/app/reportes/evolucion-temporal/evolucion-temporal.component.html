@@ -1,0 +1,18 @@
+<div class="grafica-container">
+  <div class="filter">
+    <label for="curso">Filtrar por curso:</label>
+    <select id="curso" [value]="selectedCurso" (change)="onCursoChange($event)">
+      <option value="todos">Todos</option>
+      <option *ngFor="let curso of cursos" [value]="curso">{{ curso }}</option>
+    </select>
+    <button class="btn-export" (click)="exportarPDF()">Exportar PDF</button>
+  </div>
+
+  <div id="grafico-tendencia">
+    <canvas baseChart
+      [data]="lineChartData"
+      [options]="lineChartOptions"
+      [type]="'line'">
+    </canvas>
+  </div>
+</div>

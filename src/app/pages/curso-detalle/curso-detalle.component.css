@@ -7,13 +7,13 @@
 
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: #f7f7f7;
+  background-color: #e5e0d8; /* beige claro */
   color: #333;
 }
 
 /* Encabezado y pie */
 header, footer {
-  background-color: #006400;
+  background-color: #809671; /* verde oliva suave */
   color: #fff;
   padding: 1rem 2rem;
   text-align: center;
@@ -37,10 +37,10 @@ footer p {
 
 /* Banner del curso */
 .course-header {
-  background: linear-gradient(135deg, #8FBC8F, #87CEEB);
+  background: linear-gradient(135deg, #a7c796, #f3e5ab); /* verde claro a amarillo pálido */
   padding: 2rem 1rem;
   text-align: center;
-  color: #006400;
+  color: #725c3a; /* marrón oscuro */
 }
 
 .course-header h1 {
@@ -67,7 +67,7 @@ footer p {
   background-color: #fff;
   padding: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(114, 92, 58, 0.1); /* sombra marrón oscuro */
 }
 
 .course-content section {
@@ -75,7 +75,7 @@ footer p {
 }
 
 .course-content h2 {
-  color: #006400;
+  color: #725c3a; /* marrón oscuro */
   margin-bottom: 1rem;
   font-size: 1.8rem;
 }
@@ -112,7 +112,7 @@ footer p {
 }
 
 .course-toc a {
-  color: #006400;
+  color: #809671; /* verde oliva suave */
   text-decoration: none;
   font-weight: 600;
 }
@@ -126,13 +126,13 @@ footer p {
   background-color: #fff;
   padding: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(114, 92, 58, 0.1);
   text-align: center;
 }
 
 .course-sidebar h2 {
   font-size: 1.8rem;
-  color: #006400;
+  color: #725c3a; /* marrón oscuro */
   margin-bottom: 1rem;
 }
 
@@ -142,7 +142,7 @@ footer p {
 }
 
 .btn-chat {
-  background-color: #006400;
+  background-color: #a7c796; /* verde claro */
   color: #fff;
   border: none;
   padding: 0.7rem 1.5rem;
@@ -153,9 +153,41 @@ footer p {
 }
 
 .volver-wrapper {
-  grid-column: 1 / -1; /* Ocupa todo el ancho del grid */
+  grid-column: 1 / -1;
   text-align: center;
   margin-bottom: 1rem;
+}
+.descripcion-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem; /* Espacio entre el botón y el título */
+  margin-bottom: 2rem; /* Más espacio debajo del bloque */
+}
+
+.descripcion-header h2 {
+  font-size: 1.8rem;
+  color: #725c3a; /* marrón oscuro */
+  margin: 0;
+  text-align: left;
+}
+
+.btn-volver {
+  align-self: flex-start;
+  background-color: #809671; /* verde oliva suave */
+  border: 2px solid #725c3a; /* marrón oscuro */
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-volver:hover {
+  background-color: #a7c796; /* verde claro */
+  transform: scale(1.05);
 }
 .descripcion-header {
   display: flex;
@@ -170,31 +202,58 @@ footer p {
   text-align: center;
   margin: 0;
   font-size: 1.8rem;
-  color: #006400;
+  color: #725c3a; /* marrón oscuro */
 }
 
 .btn-volver {
-  background-color: #006400;
-  border: 2px solid #004d00;
+  background-color: #809671; /* verde oliva suave */
+  border: 2px solid #725c3a; /* marrón oscuro */
   color: #fff;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   font-weight: 600;
   border-radius: 6px;
+  
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn-volver:hover {
-  background-color: #228B22;
+  background-color: #a7c796; /* verde claro */
   transform: scale(1.05);
 }
+
 .course-description p {
   text-align: center;
 }
-p{
-  color: #006400;
+
+p {
+  color: #725c3a; /* marrón oscuro */
 }
+/* Botón de Feedback flotante */
+.btn-feedback {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: #a7c796; /* verde claro */
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(114, 92, 58, 0.2); /* sombra marrón oscuro */
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-feedback:hover {
+  background-color: #809671; /* verde oliva suave */
+  transform: scale(1.05);
+}
+
+
 /* Responsive */
 @media (max-width: 768px) {
   .container {
@@ -204,4 +263,22 @@ p{
   .course-video iframe {
     height: 250px;
   }
+
+  
+.btn-feedback {
+    bottom: 16px;
+    right: 16px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 24px;
+  }
+  
+.btn-volver {
+    width: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 0.75rem 1rem;
+  }
+
+
 }

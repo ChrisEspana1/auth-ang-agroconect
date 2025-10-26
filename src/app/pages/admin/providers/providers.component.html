@@ -1,2 +1,21 @@
-<h2>Gestión de Proveedores</h2>
-<p>Visualiza y gestiona los proveedores registrados, vincúlalos a cursos y valida sus datos.</p>
+<h2>Proveedores asignados a {{ cursoNombre }}</h2>
+
+<ul>
+  <li *ngFor="let proveedor of proveedoresAsignados">
+    {{ proveedor.nombre }} - {{ proveedor.servicio }}
+<button (click)="eliminarAsignacion(proveedor.curso_proveedor_id)">Eliminar asignación</button>
+  </li>
+</ul>
+
+<hr />
+
+<h3>Asignar nuevo proveedor</h3>
+<select [(ngModel)]="proveedorSeleccionadoId">
+  <option [value]="null">-- Selecciona un proveedor --</option>
+  <option *ngFor="let proveedor of proveedoresDisponibles" [value]="proveedor.id">
+    {{ proveedor.nombre }} - {{ proveedor.servicio }}
+  </option>
+</select>
+<button (click)="asignarProveedor()" [disabled]="!proveedorSeleccionadoId">Asignar</button>
+<hr/>
+<button (click)="volverEdicionCurso()">Volver</button>
